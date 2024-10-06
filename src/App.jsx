@@ -1,6 +1,6 @@
 import React from 'react'
-import HomeLanding from './components/HomeLanding'
-import HomeMovies from './components/HomeMovies'
+import HomeLanding from './components/HomePageLanding'
+import HomeMovies from './components/HomePageMovies'
 
 const App = () => {
   return (
@@ -10,7 +10,7 @@ const App = () => {
       <HomeLanding />
       <HomeMovies />
    </div>
-   
+
    </>
   )
 }
