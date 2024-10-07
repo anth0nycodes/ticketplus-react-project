@@ -125,7 +125,7 @@ body {
   width: 198px;
   background-color: var(--dark-gray);
   position: relative;
-  box-shadow: 0 8px 12px 0 rgba(5, 5, 5, .45);
+  box-shadow: 0 8px 12px 0 rgba(5, 5, 5, 0.45);
   margin: 24px 8px;
 }
 
@@ -141,23 +141,23 @@ body {
   z-index: 1;
 }
 
-.movie__img--wrapper:hover .movie__img{
+.movie__img--wrapper:hover .movie__img {
   filter: opacity(45%) blur(4px);
   transform: scale(1.04);
 }
 
-.movie__img--wrapper:hover .movie__info--title{
+.movie__img--wrapper:hover .movie__info--title {
   opacity: 1;
 }
 
-.movie__img--wrapper:hover .movie__info--btn{
-  opacity: .8;
+.movie__img--wrapper:hover .movie__info--btn {
+  opacity: 0.8;
 }
 
 .movie__img {
   height: 288px;
   max-height: 288px;
-  transition: all .4s ease;
+  transition: all 0.4s ease;
   width: 100%;
   z-index: -2;
 }
@@ -165,7 +165,7 @@ body {
 .movie__info--title {
   position: absolute;
   top: 24px;
-  left: 13px;
+  left: 16px;
   color: var(--white);
   font-size: 20px;
   text-align: left;
@@ -178,11 +178,67 @@ body {
   background-color: var(--dark-red);
   color: var(--white);
   padding: 12px 40px;
-  left: 12px;
-  bottom: 32px;
+  left: 50%;
+  bottom: 10%;
   border: none;
   border-radius: 9999px;
   font-weight: 200;
-  opacity: 0;  
-  transition: 0.5s ease;
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  font-size: 14px;
+  transform: translateX(-50%);
+  outline: none;
+  text-align: center;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  /* Home Page Movies */
+  .movie {
+    width: 180px;
+  }
+
+  .movie__info--title {
+    font-size: 18px;
+  }
+
+  .movie__info--btn {
+    padding: 12px 32px;
+  }
+}
+
+@media (max-width: 550px) {
+  /* Home Page Landing */
+  .movie__background--title {
+    font-size: 40px;
+  }
+
+  .movie__background--para {
+    font-size: 18px;
+  }
+
+  .movie__input {
+    font-size: 16px;
+    padding: 16px 0 16px 20px;
+  }
+
+  /* Home Page Movies */
+  .movie {
+    width: 124px;
+  }
+
+  .movie__img,
+  .movie__img--wrapper {
+    max-height: 188px;
+  }
+
+  .movie__info--title {
+    font-size: 12px;
+  }
+
+  .movie__info--btn {
+    font-size: 10px;
+    padding: 8px 24px;
+  }
 }
