@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 :root {
   --red: #dc143c;
+  --dark-red: #c51135;
   --white: #ffffff;
+  --dark-gray: #1e1e1e;
 }
 * {
   box-sizing: border-box;
@@ -13,7 +15,7 @@
 
 /* Global Styles */
 body {
-  background-color: #1e1e1e;
+  background-color: var(--dark-gray);
 }
 
 .content {
@@ -91,4 +93,96 @@ body {
   transform: scale(1.02);
   box-shadow: 0 0 8px var(--red);
   outline: none;
+}
+
+/* Home Page Movies */
+.movies__container {
+  display: flex;
+  padding: 10px 0;
+}
+
+.movies__row {
+  width: 100%;
+}
+
+.movies__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.movies__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 60px;
+  width: 90%;
+}
+
+.movie {
+  border-radius: 8px;
+  overflow: hidden;
+  width: 198px;
+  background-color: var(--dark-gray);
+  position: relative;
+  box-shadow: 0 8px 12px 0 rgba(5, 5, 5, .45);
+  margin: 24px 8px;
+}
+
+.movie__img--wrapper {
+  align-items: center;
+  background-color: #1e1e1e;
+  display: flex;
+  justify-content: center;
+  max-height: 288px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+.movie__img--wrapper:hover .movie__img{
+  filter: opacity(45%) blur(4px);
+  transform: scale(1.04);
+}
+
+.movie__img--wrapper:hover .movie__info--title{
+  opacity: 1;
+}
+
+.movie__img--wrapper:hover .movie__info--btn{
+  opacity: .8;
+}
+
+.movie__img {
+  height: 288px;
+  max-height: 288px;
+  transition: all .4s ease;
+  width: 100%;
+  z-index: -2;
+}
+
+.movie__info--title {
+  position: absolute;
+  top: 24px;
+  left: 13px;
+  color: var(--white);
+  font-size: 20px;
+  text-align: left;
+  opacity: 0;
+  transition: 0.5s ease;
+}
+
+.movie__info--btn {
+  position: absolute;
+  background-color: var(--dark-red);
+  color: var(--white);
+  padding: 12px 40px;
+  left: 12px;
+  bottom: 32px;
+  border: none;
+  border-radius: 9999px;
+  font-weight: 200;
+  opacity: 0;  
+  transition: 0.5s ease;
 }
