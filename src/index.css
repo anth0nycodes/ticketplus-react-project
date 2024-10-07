@@ -4,7 +4,9 @@
   --dark-red: #c51135;
   --white: #ffffff;
   --dark-gray: #1e1e1e;
+  --gray: #808080;
 }
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -18,13 +20,88 @@ body {
   background-color: var(--dark-gray);
 }
 
-.content {
-  display: flex;
-  flex-direction: column;
+.App {
+  display: flex; 
+}
+
+a {
+  text-decoration: none;
 }
 
 .text-color {
   color: var(--red);
+}
+
+.no-cursor {
+  cursor: not-allowed !important;
+}
+
+/* Navigation Sidebar */
+.sidebar {
+  border-right: 1px solid hsla(0, 0%, 50%, 0.295);
+  color: var(--gray);
+  height: 100vh;
+  padding-left: 32px;
+  padding-top: 16px;
+  width: 200px;
+}
+
+.sidebar__title {
+  font-size: 16px;
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+
+.sidebar__top {
+  padding-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar__bottom {
+  border-top: 1px solid hsla(0, 0%, 50%, 0.377);
+  margin-right: 32px;
+  padding-top: 32px;
+}
+
+.sidebar__option {
+  display: flex;
+  color: var(--gray);
+  align-items: center;
+  border-right: 5px solid var(--dark-gray);
+  cursor: pointer;
+  margin-bottom: 24px;
+  transition: 0.3s ease;
+}
+
+.sidebar__option--active {
+  border-color: var(--red);
+}
+
+.active-icon {
+  color: var(--red);
+}
+
+.active-title {
+  color: var(--white);
+}
+.sidebar__option:hover {
+  color: var(--white);
+}
+
+.sidebar__option--icon {
+  font-size: 25px;
+  margin-right: 20px;
+}
+
+.sidebar__option--title {
+  font-weight: 300;
+  font-size: 20px;
+}
+
+/* Home Page */
+.homepage {
+  width: 90vw;
 }
 
 /* Home Page Landing */

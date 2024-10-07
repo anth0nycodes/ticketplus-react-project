@@ -1,7 +1,7 @@
 import React from "react";
 import MovieBackground from "../assets/moviebackground.jpg";
 
-const HomeLanding = () => {
+const HomePageLanding = () => {
   return (
     <section id="landing">
       <div className="movie__background--wrapper">
@@ -32,4 +32,4 @@ const HomeLanding = () => {
   );
 };
 
-export default HomeLanding;
+export default HomePageLanding;
