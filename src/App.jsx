@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { AppContext } from "./context/AppContext";
-import Nav from "./components/Nav";
 import HomePage from "./pages/HomePage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MoviesPage from "./pages/MoviesPage";
@@ -24,18 +23,14 @@ const App = () => {
   }, []);
 
   return (
-
     <>
-      <AppContext.Provider value={{ homeMovieData }}>
+      <AppContext.Provider value={{ homeMovieData, currentPage, setCurrentPage }}>
         <Router>
-          <div className="App">
-            <Nav setCurrentPage={setCurrentPage} currentPage={currentPage}/>
-            <div className="content">
-              <Routes>
-                <Route path="/" element={<HomePage />}></Route>
-                <Route path="/movies" element={<MoviesPage />}></Route>
-              </Routes>
-            </div>
+          <div className="content">
+            <Routes>
+              <Route path="/" element={<HomePage />}></Route>
+              <Route path="/movies" element={<MoviesPage />}></Route>
+            </Routes>
           </div>
         </Router>
       </AppContext.Provider>

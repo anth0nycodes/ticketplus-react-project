@@ -20,10 +20,6 @@ body {
   background-color: var(--dark-gray);
 }
 
-.App {
-  display: flex; 
-}
-
 a {
   text-decoration: none;
 }
@@ -53,9 +49,7 @@ a {
 }
 
 .sidebar__top {
-  padding-bottom: 16px;
-  display: flex;
-  flex-direction: column;
+  padding-bottom: 8px;
 }
 
 .sidebar__bottom {
@@ -74,24 +68,25 @@ a {
   transition: 0.3s ease;
 }
 
-.sidebar__option--active {
-  border-color: var(--red);
+.sidebar__option--home {
+  margin-left: -2px;
 }
 
-.active-icon {
-  color: var(--red);
-}
-
-.active-title {
-  color: var(--white);
-}
 .sidebar__option:hover {
   color: var(--white);
 }
 
+.sidebar__option--active {
+  border-color: var(--red);
+}
+
 .sidebar__option--icon {
-  font-size: 25px;
+  font-size: 27px;
   margin-right: 20px;
+}
+
+.active-icon {
+  color: var(--red);
 }
 
 .sidebar__option--title {
@@ -99,11 +94,19 @@ a {
   font-size: 20px;
 }
 
+.active-title {
+  color: var(--white);
+}
 /* Home Page */
 .homepage {
-  width: 90vw;
+  display: flex;
 }
 
+.homepage__content {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
 /* Home Page Landing */
 #landing {
   flex: 0.85 1;
@@ -270,6 +273,11 @@ a {
   white-space: nowrap;
 }
 
+/* Movie Page */
+.moviepage {
+  display: flex;
+}
+
 @media (max-width: 768px) {
   /* Home Page Movies */
   .movie {
@@ -282,6 +290,28 @@ a {
 
   .movie__info--btn {
     padding: 12px 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Navigation Sidebar */
+  .sidebar {
+    padding-left: 28px;
+    padding-top: 32px;
+    width: 90px;
+    height: max;
+  }
+
+  .sidebar__title {
+    display: none;
+  }
+
+  .sidebar__option {
+    border-right: none;
+  }
+
+  .sidebar__option--title {
+    display: none;
   }
 }
 

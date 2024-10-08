@@ -15,7 +15,7 @@ const Nav = ({ setCurrentPage, currentPage }) => {
       <div className="sidebar__top">
         <Link to="/" onClick={() => setCurrentPage("/")}>
           <div
-            className={`sidebar__option ${
+            className={`sidebar__option sidebar__option--home ${
               currentPage === "/" && "sidebar__option--active"
             }`}
           >
