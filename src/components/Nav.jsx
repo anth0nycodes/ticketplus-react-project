@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -7,8 +7,11 @@ import {
   faGear,
   faCircleQuestion,
 } from "@fortawesome/free-solid-svg-icons";
+import { AppContext } from "../context/AppContext";
 
-const Nav = ({ setCurrentPage, currentPage }) => {
+const Nav = () => {
+  const { setCurrentPage, currentPage, setSearchBarValue } =
+    useContext(AppContext);
   return (
     <nav className="sidebar">
       <h4 className="sidebar__title">Menu</h4>
@@ -34,7 +37,13 @@ const Nav = ({ setCurrentPage, currentPage }) => {
             </p>
           </div>
         </Link>
-        <Link to="/movies" onClick={() => setCurrentPage("/movies")}>
+        <Link
+          to="/movies"
+          onClick={() => {
+            setCurrentPage("/movies");
+            setSearchBarValue("");
+          }}
+        >
           <div
             className={`sidebar__option ${
               currentPage === "/movies" && "sidebar__option--active"

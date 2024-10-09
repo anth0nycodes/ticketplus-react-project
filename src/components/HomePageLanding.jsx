@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import MovieBackground from "../assets/moviebackground.jpg";
+import { AppContext } from "../context/AppContext";
+import { useNavigate } from "react-router-dom";
 
 const HomePageLanding = () => {
+  const { fetchMoviesBySearch, setCurrentPage } = useContext(AppContext);
+  const [homeSearchBarValue, setHomeSearchBarValue] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (event.key === "Enter") {
+      fetchMoviesBySearch(homeSearchBarValue);
+      setCurrentPage("/movies");
+      navigate("/movies");
+    }
+  };
+
   return (
     <section id="landing">
       <div className="movie__background--wrapper">
@@ -22,7 +37,15 @@ const HomePageLanding = () => {
             </p>
             <div className="movie__background--search">
               <div className="movie__input--wrapper">
-                <input type="text" className="movie__input" placeholder="Find a movie"/>
+                <input
+                  type="text"
+                  className="movie__input"
+                  onChange={(event) =>
+                    setHomeSearchBarValue(event.target.value)
+                  }
+                  placeholder="Find a movie"
+                  onKeyUp={handleSubmit}
+                />
               </div>
             </div>
           </div>
