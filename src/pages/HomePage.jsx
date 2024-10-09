@@ -1,18 +1,39 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import HomePageMovies from "../components/HomePageMovies";
 import HomePageLanding from "../components/HomePageLanding";
 import Nav from "../components/Nav";
 import { AppContext } from "../context/AppContext";
+import axios from "axios";
 
 const HomePage = () => {
   const {currentPage, setCurrentPage} = useContext(AppContext);
+  const [defaultMovieData, setDefaultMovieData] = useState([]);
+
+  const fetchDefaultMovies = async () => {
+    try {
+      const { data } = await axios.get(
+        "https://omdbapi.com/?apikey=df7652b5&s=minions"
+      );
+      const homeMovies = data.Search.slice(0, 6);
+      console.log(homeMovies);
+      setDefaultMovieData(homeMovies);
+    }
+    catch(error) {
+      console.error("An error has occurred in fetchHomeMovies: ", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchDefaultMovies();
+  }, []);
+  
   return (
     <>
       <div className="homepage">
         <Nav setCurrentPage={setCurrentPage} currentPage={currentPage} />
         <div className="homepage__content">
           <HomePageLanding />
-          <HomePageMovies />
+          <HomePageMovies defaultMovieData={defaultMovieData}/>
         </div>
       </div>
     </>
