@@ -4,7 +4,7 @@ import { AppContext } from "../context/AppContext.js";
 import { useNavigate } from "react-router-dom";
 
 const HomePageLanding = () => {
-  const { fetchMoviesBySearch, setCurrentPage } = useContext(AppContext);
+  const { fetchMoviesBySearch, setCurrentPage, setSearchBarValue } = useContext(AppContext);
   const [homeSearchBarValue, setHomeSearchBarValue] = useState("");
   const navigate = useNavigate();
 
@@ -12,6 +12,7 @@ const HomePageLanding = () => {
     event.preventDefault();
     if (event.key === "Enter") {
       fetchMoviesBySearch(homeSearchBarValue);
+      setSearchBarValue("");
       setCurrentPage("/movies");
       navigate("/movies");
     }
