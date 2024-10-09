@@ -7,24 +7,29 @@ import MoviesPage from "./pages/MoviesPage";
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState(window.location.pathname);
-  const [homeMovieData, setHomeMovieData] = useState([]);
+  const [defaultMovieData, setDefaultMovieData] = useState([]);
 
-  const fetchHomeMovies = async () => {
-    const { data } = await axios.get(
-      "https://omdbapi.com/?apikey=df7652b5&s=minions"
-    );
-    const homeMovies = data.Search.slice(0, 6);
-    console.log(homeMovies);
-    setHomeMovieData(homeMovies);
+  const fetchDefaultMovies = async () => {
+    try {
+      const { data } = await axios.get(
+        "https://omdbapi.com/?apikey=df7652b5&s=minions"
+      );
+      const homeMovies = data.Search.slice(0, 6);
+      console.log(homeMovies);
+      setDefaultMovieData(homeMovies);
+    }
+    catch(error) {
+      console.error("An error has occurred in fetchHomeMovies: ", error);
+    }
   };
 
   useEffect(() => {
-    fetchHomeMovies();
+    fetchDefaultMovies();
   }, []);
 
   return (
     <>
-      <AppContext.Provider value={{ homeMovieData, currentPage, setCurrentPage }}>
+      <AppContext.Provider value={{ defaultMovieData, currentPage, setCurrentPage }}>
         <Router>
           <div className="content">
             <Routes>
