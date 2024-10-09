@@ -104,6 +104,7 @@ a {
 
 .homepage__content {
   display: flex;
+  flex: 1 1;
   flex-direction: column;
   overflow: hidden;
 }
@@ -276,6 +277,12 @@ a {
 /* Movie Page */
 .moviepage {
   display: flex;
+}
+
+.moviepage__content {
+  display: flex;
+  flex: 1 1;
+  flex-direction: column;
 }
 
 @media (max-width: 768px) {
