@@ -1,8 +1,8 @@
 import React from "react";
 import Movie from "./ui/Movie.jsx";
+import MovieSkeleton from "./ui/MovieSkeleton.jsx";
 
-const HomePageMovies = ({defaultMovieData}) => {
-
+const HomePageMovies = ({ defaultMovieData }) => {
   return (
     <section id="movies">
       <div className="movies__container">
@@ -11,12 +11,11 @@ const HomePageMovies = ({defaultMovieData}) => {
             <div className="movies__list">
               {defaultMovieData.length > 0
                 ? defaultMovieData.map((movie) => (
-                    <Movie
-                      key={movie.imdbID}
-                      movie={movie}
-                    />
+                    <Movie key={movie.imdbID} movie={movie} />
                   ))
-                : "Loading..."}
+                : new Array(6)
+                    .fill(0)
+                    .map((_, index) => <MovieSkeleton key={index} />)}
             </div>
           </div>
         </div>

@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { AppContext } from "./context/AppContext";
-import HomePage from "./pages/HomePage";
+import { AppContext } from "./context/AppContext.js";
+import HomePage from "./pages/HomePage.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import MoviesPage from "./pages/MoviesPage";
+import MoviesPage from "./pages/MoviesPage.jsx";
 import axios from "axios";
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState(window.location.pathname);
   const [searchedMovies, setSearchedMovies] = useState([]);
   const [searchBarValue, setSearchBarValue] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchMoviesBySearch = async (searchQuery) => {
     if (!searchQuery) return;
+    setIsLoading(true);
     try {
       const { data } = await axios.get(
         `https://omdbapi.com/?apikey=df7652b5&s=${searchQuery}`
@@ -19,6 +21,8 @@ const App = () => {
       const movies = data.Search.slice(0, 6);
       console.log(movies);
       setSearchedMovies(movies);
+
+      setIsLoading(false);
     } catch (error) {
       console.error("An error has occurred in fetchMoviesByQuery: ", error);
     }
@@ -27,6 +31,7 @@ const App = () => {
   useEffect(() => {
     fetchMoviesBySearch();
   }, []);
+
   return (
     <>
       <AppContext.Provider
@@ -38,6 +43,7 @@ const App = () => {
           setSearchedMovies,
           searchBarValue,
           setSearchBarValue,
+          isLoading,
         }}
       >
         <Router>

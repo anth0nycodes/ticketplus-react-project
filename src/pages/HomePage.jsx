@@ -1,12 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
-import HomePageMovies from "../components/HomePageMovies";
-import HomePageLanding from "../components/HomePageLanding";
-import Nav from "../components/Nav";
-import { AppContext } from "../context/AppContext";
+import HomePageMovies from "../components/HomePageMovies.jsx";
+import HomePageLanding from "../components/HomePageLanding.jsx";
+import Nav from "../components/Nav.jsx";
+import { AppContext } from "../context/AppContext.js";
 import axios from "axios";
 
 const HomePage = () => {
-  const {currentPage, setCurrentPage} = useContext(AppContext);
+  const { currentPage, setCurrentPage } = useContext(AppContext);
   const [defaultMovieData, setDefaultMovieData] = useState([]);
 
   const fetchDefaultMovies = async () => {
@@ -17,8 +17,7 @@ const HomePage = () => {
       const homeMovies = data.Search.slice(0, 6);
       console.log(homeMovies);
       setDefaultMovieData(homeMovies);
-    }
-    catch(error) {
+    } catch (error) {
       console.error("An error has occurred in fetchHomeMovies: ", error);
     }
   };
@@ -26,14 +25,14 @@ const HomePage = () => {
   useEffect(() => {
     fetchDefaultMovies();
   }, []);
-  
+
   return (
     <>
       <div className="homepage">
         <Nav setCurrentPage={setCurrentPage} currentPage={currentPage} />
         <div className="homepage__content">
           <HomePageLanding />
-          <HomePageMovies defaultMovieData={defaultMovieData}/>
+          <HomePageMovies defaultMovieData={defaultMovieData} />
         </div>
       </div>
     </>

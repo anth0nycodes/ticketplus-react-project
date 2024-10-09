@@ -1,7 +1,7 @@
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext } from "react";
-import { AppContext } from "../context/AppContext";
+import { AppContext } from "../context/AppContext.js";
 
 const MoviesSearchBar = () => {
   const { fetchMoviesBySearch, searchBarValue, setSearchBarValue } =
@@ -11,8 +11,7 @@ const MoviesSearchBar = () => {
     event.preventDefault();
     if (event.key === "Enter") {
       fetchMoviesBySearch(searchBarValue);
-    }
-    else {
+    } else {
       fetchMoviesBySearch(searchBarValue);
     }
   };
