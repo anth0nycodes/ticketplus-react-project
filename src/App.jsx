@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MoviesPage from "./pages/MoviesPage.jsx";
 import axios from "axios";
+import MovieInfoPage from "./pages/MovieInfoPage.jsx";
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState(window.location.pathname);
@@ -51,6 +52,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<HomePage />}></Route>
               <Route path="/movies" element={<MoviesPage />}></Route>
+              <Route path="/movies/:movieId" element={<MovieInfoPage />}></Route>
             </Routes>
           </div>
         </Router>

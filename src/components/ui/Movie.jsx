@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AppContext } from "../../context/AppContext";
 
 const Movie = ({ movie }) => {
+  const { setCurrentPage } = useContext(AppContext);
   return (
     <div className="movie">
       <figure className="movie__img--wrapper">
@@ -10,9 +13,12 @@ const Movie = ({ movie }) => {
           className="movie__img"
         />
         <h3 className="movie__info--title">{movie.Title}</h3>
-        <a href="#">
+        <Link
+          to={`/movies/${movie.imdbID}`}
+          onClick={() => setCurrentPage(null)}
+        >
           <button className="movie__info--btn">Find Out More</button>
-        </a>
+        </Link>
       </figure>
     </div>
   );

@@ -9,9 +9,9 @@ const MoviesPage = () => {
 
   return (
     <>
-      <div className="moviepage">
+      <div className="moviespage">
         <Nav currentPage={currentPage} setCurrentPage={setCurrentPage} />
-        <div className="moviepage__content">
+        <div className="moviespage__content">
           <MoviesSearchBar />
           <MoviesPageMovies />
         </div>

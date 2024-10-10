@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,6 +12,12 @@ import { AppContext } from "../context/AppContext";
 const Nav = () => {
   const { setCurrentPage, currentPage, setSearchBarValue } =
     useContext(AppContext);
+
+  useEffect(() => {
+    setSearchBarValue("");
+    setCurrentPage(window.location.pathname);
+  }, [setCurrentPage]);
+
   return (
     <nav className="sidebar">
       <h4 className="sidebar__title">Menu</h4>
@@ -37,13 +43,7 @@ const Nav = () => {
             </p>
           </div>
         </Link>
-        <Link
-          to="/movies"
-          onClick={() => {
-            setCurrentPage("/movies");
-            setSearchBarValue("");
-          }}
-        >
+        <Link to="/movies" onClick={() => setCurrentPage("/movies")}>
           <div
             className={`sidebar__option ${
               currentPage === "/movies" && "sidebar__option--active"

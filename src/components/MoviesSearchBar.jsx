@@ -17,18 +17,18 @@ const MoviesSearchBar = () => {
   };
 
   return (
-    <form className="moviepage__search" onSubmit={handleSubmit}>
-      <div className="moviepage__input--wrapper">
+    <form className="moviespage__search" onSubmit={handleSubmit}>
+      <div className="moviespage__input--wrapper">
         <input
           type="text"
-          className="moviepage__input"
+          className="moviespage__input"
           placeholder="Search for a movie"
           value={searchBarValue}
           onChange={(event) => setSearchBarValue(event.target.value)}
         />
       </div>
-      <div className="moviepage__btn--wrapper">
-        <button type="submit" className="moviepage__btn">
+      <div className="moviespage__btn--wrapper">
+        <button type="submit" className="moviespage__btn">
           <FontAwesomeIcon icon={faSearch} />
         </button>
       </div>

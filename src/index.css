@@ -97,7 +97,7 @@ a {
 .active-title {
   color: var(--white);
 }
-/* Home Page */
+/* Homepage */
 .homepage {
   display: flex;
 }
@@ -108,7 +108,7 @@ a {
   flex-direction: column;
   overflow: hidden;
 }
-/* Home Page Landing */
+/* Homepage Landing */
 #landing {
   flex: 0.85 1;
   overflow: hidden;
@@ -176,7 +176,7 @@ a {
   outline: none;
 }
 
-/* Home Page Movies */
+/* Homepage Movies */
 .movies__container {
   display: flex;
   padding: 10px 0;
@@ -274,20 +274,20 @@ a {
   white-space: nowrap;
 }
 
-/* Movie Page */
-.moviepage {
+/* Moviespage */
+.moviespage {
   display: flex;
   color: var(--white);
 }
 
-.moviepage__content {
+.moviespage__content {
   display: flex;
   flex: 1 1;
   flex-direction: column;
 }
 
-/* Moviepage Searchbar */
-.moviepage__search {
+/* Moviespage Searchbar */
+.moviespage__search {
   display: flex;
   align-items: center;
   background-color: var(--red);
@@ -297,11 +297,11 @@ a {
   width: 100%;
 }
 
-.moviepage__input--wrapper {
+.moviespage__input--wrapper {
   flex: 1 1;
 }
 
-.moviepage__input {
+.moviespage__input {
   background-color: initial;
   border: none;
   font-size: 40px;
@@ -312,16 +312,16 @@ a {
   font-weight: 300;
 }
 
-.moviepage__input::placeholder {
+.moviespage__input::placeholder {
   color: var(--white);
   font-weight: 200;
 }
 
-.moviepage__btn--wrapper {
+.moviespage__btn--wrapper {
   flex: 0.15 1;
 }
 
-.moviepage__btn {
+.moviespage__btn {
   background-color: initial;
   border: 3px solid var(--white);
   color: var(--white);
@@ -333,8 +333,8 @@ a {
   width: 100%;
 }
 
-/* Moviepage Default Image */
-.moviepage__img--wrapper {
+/* Moviespage Default Image */
+.moviespage__img--wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -342,16 +342,28 @@ a {
   width: 38%;
 }
 
-.moviepage__img {
+.moviespage__img {
   width: 100%;
   margin-bottom: 16px;
 }
 
-.moviepage__img--title {
+.moviespage__img--title {
   font-weight: 200;
   text-align: center;
   width: 100%;
   font-size: 32px;
+}
+
+/* Movieinfo Page */
+.movieinfopage {
+  display: flex;
+  color: var(--white);
+}
+
+.movieinfopage__content {
+  display: flex;
+  flex: 1 1;
+  flex-direction: column;
 }
 
 /* Skeleton Loading */
@@ -396,20 +408,20 @@ a {
 }
 
 @media (max-width: 1320px) {
-  /* Moviepage Default Image */
-  .moviepage__img--title {
+  /* Moviespage Default Image */
+  .moviespage__img--title {
     font-size: 20px;
   }
 }
 
 @media (max-width: 1040px) {
-  /* Moviepage Default Image */
-  .moviepage__img--wrapper {
+  /* Moviespage Default Image */
+  .moviespage__img--wrapper {
     width: 250px;
   }
 }
 @media (max-width: 768px) {
-  /* Home Page Movies */
+  /* Homepage Movies */
   .movie {
     width: 180px;
   }
@@ -444,14 +456,14 @@ a {
     display: none;
   }
 
-  /* Moviepage Searchbar */
-  .moviepage__input {
+  /* Moviespage Searchbar */
+  .moviespage__input {
     font-size: 28px;
   }
 }
 
 @media (max-width: 550px) {
-  /* Home Page Landing */
+  /* Homepage Landing */
   .movie__background--title {
     font-size: 40px;
   }
@@ -465,7 +477,7 @@ a {
     padding: 16px 0 16px 20px;
   }
 
-  /* Home Page Movies */
+  /* Homepage Movies */
   .movie {
     width: 124px;
   }
@@ -486,8 +498,8 @@ a {
 }
 
 @media (max-width: 400px) {
-  /* Moviepage Searchbar */
-  .moviepage__btn--wrapper {
+  /* Moviespage Searchbar */
+  .moviespage__btn--wrapper {
     display: none;
   }
 }

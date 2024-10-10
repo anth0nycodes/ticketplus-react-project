@@ -21,13 +21,13 @@ const MoviesPageMovies = () => {
                   <Movie key={movie.imdbID} movie={movie} />
                 ))
               ) : (
-                <figure className="moviepage__img--wrapper">
+                <figure className="moviespage__img--wrapper">
                   <img
                     src={SearchGraphic}
-                    className="moviepage__img"
+                    className="moviespage__img"
                     alt="cartoon graphic of person holding magnifying glass"
                   />
-                  <h1 className="moviepage__img--title">
+                  <h1 className="moviespage__img--title">
                     Waiting for your Search...
                   </h1>
                 </figure>
