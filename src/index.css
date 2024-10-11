@@ -3,6 +3,7 @@
   --red: #dc143c;
   --dark-red: #c51135;
   --white: #ffffff;
+  --murky-white: #fbfbfb;
   --dark-gray: #1e1e1e;
   --gray: #808080;
 }
@@ -360,16 +361,73 @@ a {
   color: var(--white);
 }
 
-.movieinfopage__content {
+.movieinfo__container {
+  padding: 20px 0;
+  width: 90%;
+}
+
+.movieinfo__row {
+  margin: 0 40px;
+}
+
+.movieinfo {
   display: flex;
-  flex: 1 1;
-  flex-direction: column;
+  align-items: start;
+}
+
+.movieinfo__img--wrapper {
+  margin-right: 80px;
+}
+
+.movieinfo__img {
+  border-radius: 8px;
+  height: 433px;
+  width: 300px;
+}
+
+.movieinfo__text--title {
+  font-size: 48px;
+  max-width: 100%;
+  margin-bottom: 8px;
+}
+
+.movieinfo__text--info {
+  margin-bottom: 24px;
+  max-width: 100%;
+}
+
+.movieinfo__text--subtitle {
+  margin-bottom: 4px;
+}
+
+.movieinfo__text--para {
+  letter-spacing: 0.4px;
+  line-height: 1.7em;
+  margin-bottom: 24px;
+}
+
+.movieinfo__text--btn {
+  align-items: center;
+  gap: 8px;
+  border: 2px solid transparent;
+  background-color: var(--red);
+  border-radius: 4px;
+  color: #fff;
+  display: flex;
+  font-size: 16px;
+  padding: 15px 20px;
+  transition: 0.3s ease;
+  outline: none;
+}
+
+.movieinfo__text--btn:hover {
+  background-color: var(--dark-red);
+  color: var(--murky-white);
 }
 
 /* Skeleton Loading */
 .skeleton {
-  background-color: #dddbdd;
-  color: #dddbdd;
+  background-color: #2a2a2a;
   display: inline-block;
   position: relative;
   overflow: hidden;
@@ -384,19 +442,72 @@ a {
   bottom: 0;
   background-image: linear-gradient(
     90deg,
-    hsla(0, 0%, 100%, 0),
-    hsla(0, 0%, 100%, 0.2) 20%,
-    hsla(0, 0%, 100%, 0.5) 60%,
-    hsla(0, 0%, 100%, 0)
+    #2a2a2a,
+    #3a3a3a,
+    #2a2a2a
   );
-  animation: shimmer 1.2s infinite;
-  transform: translateX(-100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
 }
 
 @keyframes shimmer {
-  100% {
-    transform: translateX(100%);
+  0% {
+    background-position: 200% 0;
   }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.movieinfo__text {
+  width: 100%;
+}
+
+.movieinfo__img--skeleton {
+  width: 300px;
+  height: 433px;
+  border-radius: 8px;
+}
+
+.movieinfo__title--skeleton {
+  width: 60%;
+  height: 48px;
+  margin-bottom: 8px;
+}
+
+.movieinfo__text--info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.movieinfo__info--skeleton {
+  width: 7%;
+  height: 20px;
+}
+
+.movieinfo__info--separator {
+  margin: 0 5px;
+  color: var(--white);
+}
+
+.movieinfo__paras--skeleton {
+  margin-top: 16px;
+}
+
+.movieinfo__para--skeleton {
+  height: 16px;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.movieinfo__para--skeleton:last-of-type {
+  margin-bottom: 24px;
+}
+
+.movieinfo__btn--skeleton {
+  width: 120px;
+  height: 40px;
 }
 
 .movie--skeleton {
@@ -414,12 +525,55 @@ a {
   }
 }
 
+@media (max-width: 1200px) {
+  /* Movieinfo Page */
+  .movieinfo__img--wrapper {
+    margin-right: 32px;
+  }
+
+  .movieinfo__text--title {
+    font-size: 32px;
+  }
+
+  .movieinfo__text--info {
+    font-size: 14px;
+  }
+
+  .movieinfo__text--para {
+    font-size: 13px;
+  }
+
+  .movieinfo__text--btn {
+    font-size: 14px;
+    padding: 12px 15px;
+  }
+}
+
 @media (max-width: 1040px) {
   /* Moviespage Default Image */
   .moviespage__img--wrapper {
     width: 250px;
   }
+
+  /* Movieinfo Page */
+  .movieinfo__img {
+    height: 350px;
+    width: 240px;
+  }
+
+  .movieinfo__text--para {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+  }
+
+  .movieinfo__img--skeleton {
+    height: 350px;
+    width: 240px;
+  }
 }
+
 @media (max-width: 768px) {
   /* Homepage Movies */
   .movie {
@@ -432,6 +586,27 @@ a {
 
   .movie__info--btn {
     padding: 12px 32px;
+  }
+
+  /* Movieinfo Page */
+  .movieinfo {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .movieinfo__img--wrapper {
+    margin-bottom: 32px;
+    margin-right: 0;
+  }
+
+  .movieinfo__img {
+    height: 433px;
+    width: 300px;
+  }
+
+  .movieinfo__img--skeleton {
+    height: 433px;
+    width: 300px;
   }
 }
 
@@ -497,9 +672,54 @@ a {
   }
 }
 
+@media (max-width: 468px) {
+  /* Movieinfo Page */
+  .movieinfo__img {
+    height: 300px;
+    width: 200px;
+  }
+
+  .movieinfo__text--title {
+    font-size: 24px;
+  }
+
+  .movieinfo__text--info {
+    font-size: 12px;
+  }
+
+  .movieinfo__text--para {
+    font-size: 12px;
+  }
+
+  .movieinfo__img--skeleton {
+    height: 300px;
+    width: 200px;
+  }
+
+  .movieinfo__title--skeleton {
+    height: 36px;
+  }
+
+  .movieinfo__info--skeleton,
+  .movieinfo__para--skeleton {
+    height: 14px;
+  }
+}
+
 @media (max-width: 400px) {
   /* Moviespage Searchbar */
   .moviespage__btn--wrapper {
     display: none;
+  }
+
+  /* Movieinfo Page */
+  .movieinfo__img {
+    height: 275px;
+    width: 175px;
+  }
+
+  .movieinfo__img--skeleton {
+    height: 275px;
+    width: 175px;
   }
 }

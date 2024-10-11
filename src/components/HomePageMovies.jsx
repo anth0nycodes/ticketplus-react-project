@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Movie from "./ui/Movie.jsx";
 import MovieSkeleton from "./ui/MovieSkeleton.jsx";
+import { AppContext } from "../context/AppContext.js";
 
-const HomePageMovies = ({ defaultMovieData }) => {
+const HomePageMovies = () => {
+  const {defaultMovieData} = useContext(AppContext);
   return (
     <section id="movies">
       <div className="movies__container">

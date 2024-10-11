@@ -11,6 +11,20 @@ const App = () => {
   const [searchedMovies, setSearchedMovies] = useState([]);
   const [searchBarValue, setSearchBarValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [defaultMovieData, setDefaultMovieData] = useState([]);
+
+  const fetchDefaultMovies = async () => {
+    try {
+      const { data } = await axios.get(
+        "https://omdbapi.com/?apikey=df7652b5&s=minions"
+      );
+      const homeMovies = data.Search.slice(0, 6);
+      console.log(homeMovies);
+      setDefaultMovieData(homeMovies);
+    } catch (error) {
+      console.error("An error has occurred in fetchHomeMovies: ", error);
+    }
+  };
 
   const fetchMoviesBySearch = async (searchQuery) => {
     if (!searchQuery) return;
@@ -30,6 +44,7 @@ const App = () => {
   };
 
   useEffect(() => {
+    fetchDefaultMovies();
     fetchMoviesBySearch();
   }, []);
 
@@ -39,12 +54,14 @@ const App = () => {
         value={{
           currentPage,
           setCurrentPage,
+          defaultMovieData,
           fetchMoviesBySearch,
           searchedMovies,
           setSearchedMovies,
           searchBarValue,
           setSearchBarValue,
           isLoading,
+          setIsLoading
         }}
       >
         <Router>
