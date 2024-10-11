@@ -387,13 +387,13 @@ a {
 
 .movieinfo__text--title {
   font-size: 48px;
-  max-width: 100%;
   margin-bottom: 8px;
 }
 
 .movieinfo__text--info {
+  display: flex;
+  align-items: center;
   margin-bottom: 24px;
-  max-width: 100%;
 }
 
 .movieinfo__text--subtitle {
@@ -470,11 +470,6 @@ a {
   margin-bottom: 8px;
 }
 
-.movieinfo__text--info {
-  display: flex;
-  align-items: center;
-  margin-bottom: 24px;
-}
 
 .movieinfo__info--skeleton {
   width: 70px;
