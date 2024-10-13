@@ -11,7 +11,7 @@ import Movie from "../components/ui/Movie";
 const MovieInfoPage = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const { movieId } = useParams();
-  const { defaultMovieData, fetchDefaultMovies } = useContext(AppContext);
+  const { defaultMovieData } = useContext(AppContext);
   const [isMovieInfoLoading, setIsMovieInfoLoading] = useState(true);
 
   const fetchMovieInfo = async () => {
@@ -30,7 +30,8 @@ const MovieInfoPage = () => {
   useEffect(() => {
     setIsMovieInfoLoading(true);
     fetchMovieInfo();
-  }, [movieId, fetchDefaultMovies]);
+    window.scrollTo(0, 0);
+  }, [movieId]);
 
   return (
     <>
