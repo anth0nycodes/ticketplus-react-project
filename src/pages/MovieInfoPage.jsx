@@ -6,34 +6,45 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { AppContext } from "../context/AppContext";
 import MovieInfoPageSkeleton from "../components/MovieInfoPageSkeleton";
+import Movie from "../components/ui/Movie";
 
 const MovieInfoPage = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const { movieId } = useParams();
-  const { defaultMovieData, isLoading, setIsLoading } = useContext(AppContext);
+  const { defaultMovieData, fetchDefaultMovies } = useContext(AppContext);
+  const [isMovieInfoLoading, setIsMovieInfoLoading] = useState(true);
+  const [isRecommendedMoviesLoading, setIsRecommendedMoviesLoading] =
+    useState(true);
+  const [existingMovieData, setExistingMovieData] = useState(defaultMovieData);
 
   const fetchMovieInfo = async () => {
-    setIsLoading(true);
-    const { data } = await axios.get(
-      `https://omdbapi.com/?apikey=df7652b5&i=${movieId}&plot=full`
-    );
-    console.log(data);
-    setSelectedMovie(data);
-    setIsLoading(false);
+    try {
+      const { data } = await axios.get(
+        `https://omdbapi.com/?apikey=df7652b5&i=${movieId}&plot=full`
+      );
+      console.log(data);
+      setSelectedMovie(data);
+      setIsMovieInfoLoading(false);
+    } catch (error) {
+      console.error("An error occurred in fetchMovieInfo: ", error);
+    }
   };
 
   useEffect(() => {
+    setIsMovieInfoLoading(true);
     fetchMovieInfo();
-  }, []);
+    if (existingMovieData) {
+      setIsRecommendedMoviesLoading(false);
+    }
+  }, [movieId, fetchDefaultMovies]);
 
   return (
     <>
-      {isLoading ? (
+      {isMovieInfoLoading ? (
         <MovieInfoPageSkeleton />
       ) : (
-        <div className="movieinfopage">
+        <main className="movieinfopage">
           <Nav />
-
           <div className="container movieinfo__container">
             <div className="row movieinfo__row">
               <section className="movieinfo">
@@ -50,7 +61,7 @@ const MovieInfoPage = () => {
                   </h1>
                   <div className="movieinfo__text--info">
                     {selectedMovie?.Released} | {selectedMovie?.Runtime} |{" "}
-                    {selectedMovie?.Ratings[0].Value}
+                    {selectedMovie?.Ratings[0]?.Value}
                   </div>
                   <h3 className="movieinfo__text--subtitle">Overview:</h3>
                   <p className="movieinfo__text--para">{selectedMovie?.Plot}</p>
@@ -60,9 +71,28 @@ const MovieInfoPage = () => {
                   </button>
                 </div>
               </section>
+              <section className="recommended__movies">
+                <div className="movies__container">
+                  <div className="movies__row">
+                    <div className="movies__content">
+                      <div className="movies__list">
+                        {isRecommendedMoviesLoading
+                          ? new Array(6)
+                              .fill(0)
+                              .map((_, index) => <MovieSkeleton key={index} />)
+                          : defaultMovieData
+                              .slice(0, 6)
+                              .map((movie) => (
+                                <Movie key={movie.imdbID} movie={movie} />
+                              ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
             </div>
           </div>
-        </div>
+        </main>
       )}
     </>
   );

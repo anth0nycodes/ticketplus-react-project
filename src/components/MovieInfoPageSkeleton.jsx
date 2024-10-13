@@ -1,5 +1,6 @@
 import React from "react";
 import Nav from "./Nav";
+import MovieSkeleton from "./ui/MovieSkeleton";
 
 const MovieInfoPageSkeleton = () => {
   return (
