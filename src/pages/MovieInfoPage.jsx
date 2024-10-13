@@ -13,9 +13,6 @@ const MovieInfoPage = () => {
   const { movieId } = useParams();
   const { defaultMovieData, fetchDefaultMovies } = useContext(AppContext);
   const [isMovieInfoLoading, setIsMovieInfoLoading] = useState(true);
-  const [isRecommendedMoviesLoading, setIsRecommendedMoviesLoading] =
-    useState(true);
-  const [existingMovieData, setExistingMovieData] = useState(defaultMovieData);
 
   const fetchMovieInfo = async () => {
     try {
@@ -33,9 +30,6 @@ const MovieInfoPage = () => {
   useEffect(() => {
     setIsMovieInfoLoading(true);
     fetchMovieInfo();
-    if (existingMovieData) {
-      setIsRecommendedMoviesLoading(false);
-    }
   }, [movieId, fetchDefaultMovies]);
 
   return (
@@ -43,7 +37,7 @@ const MovieInfoPage = () => {
       {isMovieInfoLoading ? (
         <MovieInfoPageSkeleton />
       ) : (
-        <main className="movieinfopage">
+        <div className="movieinfopage">
           <Nav />
           <div className="container movieinfo__container">
             <div className="row movieinfo__row">
@@ -74,17 +68,14 @@ const MovieInfoPage = () => {
               <section className="recommended__movies">
                 <div className="movies__container">
                   <div className="movies__row">
+                    <h2 className="recommended__movies--title">
+                      Recommended Movies
+                    </h2>
                     <div className="movies__content">
-                      <div className="movies__list">
-                        {isRecommendedMoviesLoading
-                          ? new Array(6)
-                              .fill(0)
-                              .map((_, index) => <MovieSkeleton key={index} />)
-                          : defaultMovieData
-                              .slice(0, 6)
-                              .map((movie) => (
-                                <Movie key={movie.imdbID} movie={movie} />
-                              ))}
+                      <div className="recommended__movies--list movies__list">
+                        {defaultMovieData.slice(0, 6).map((movie) => (
+                          <Movie key={movie.imdbID} movie={movie} />
+                        ))}
                       </div>
                     </div>
                   </div>
@@ -92,7 +83,7 @@ const MovieInfoPage = () => {
               </section>
             </div>
           </div>
-        </main>
+        </div>
       )}
     </>
   );

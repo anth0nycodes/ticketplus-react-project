@@ -61,7 +61,7 @@ const App = () => {
           searchBarValue,
           setSearchBarValue,
           isLoading,
-          setIsLoading
+          setIsLoading,
         }}
       >
         <Router>
@@ -69,7 +69,10 @@ const App = () => {
             <Routes>
               <Route path="/" element={<HomePage />}></Route>
               <Route path="/movies" element={<MoviesPage />}></Route>
-              <Route path="/movies/:movieId" element={<MovieInfoPage />}></Route>
+              <Route
+                path="/movies/:movieId"
+                element={<MovieInfoPage />}
+              ></Route>
             </Routes>
           </div>
         </Router>

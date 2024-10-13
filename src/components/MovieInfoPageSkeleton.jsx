@@ -32,6 +32,23 @@ const MovieInfoPageSkeleton = () => {
               <div className="movieinfo__btn--skeleton skeleton"></div>
             </div>
           </section>
+          <section className="recommended__movies">
+            <div className="movies__container">
+              <div className="movies__row">
+                <h2 className="recommended__movies--title">
+                  Recommended Movies
+                </h2>
+                <div className="movies__content">
+                  <h2 className="movies__title movies__title--skeleton skeleton"></h2>
+                  <div className="recommended__movies--list movies__list">
+                    {new Array(6).fill(0).map((_, index) => (
+                      <MovieSkeleton key={index} />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </div>
